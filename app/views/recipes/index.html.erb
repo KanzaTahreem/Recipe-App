@@ -1,1 +1,9 @@
-<h2>Recipes</h2>
+<section class="recipes_container">
+  <button type="button" class="add_btn btn"><%= link_to "Add new recipe", new_recipe_path %></button>
+  <% @recipes.each do |recipe| %>
+    <h2 class="recipe_name"><%= recipe.name %></h2>
+    <p class="recipe_desc"><%= truncate(recipe.description, length: 20, omission: "...") %></p> 
+    <button type="button" class="remove_btn btn"><%= link_to "Delete", recipe_path(id: recipe.id), data: { turbo_method: :delete } %></button>
+    <button type="button" class="details btn"><%= link_to "Details", recipe_path(id: recipe.id) %></button>
+  <% end %>
+</section>

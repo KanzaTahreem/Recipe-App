@@ -10,9 +10,29 @@ class RecipesController < ApplicationController
     @recipe = @user.recipes.find(params[:id])  
   end
 
+  def new
+    @recipe = Recipe.new
+  end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user = @user
+
+    if @recipe.save
+      redirect_to recipe_path(id: @recipe.id), notice: 'Recipe created successfully'
+    else
+      flash.now[:alert] = @recipe.errors.full_messages.first if @recipe.errors.any?
+      render :new, status: 400
+    end
+  end
+
   private
 
   def find_user
     @user = current_user
+  end
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :description, :preparation_time, :cooking_time, :public)
   end
 end

@@ -1,13 +1,12 @@
 class RecipesController < ApplicationController
   before_action :find_user, expect: [:update]
 
-  
   def index
     @recipes = @user.recipes.all
   end
 
   def show
-    @recipe = @user.recipes.find(params[:id])  
+    @recipe = @user.recipes.find(params[:id])
   end
 
   def new
@@ -28,7 +27,7 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
-  
+
     if @recipe.destroy
       redirect_to recipes_path, notice: 'Recipe was deleted successfully'
     else

@@ -6,6 +6,10 @@ class RecipesController < ApplicationController
     @recipes = @user.recipes.all
   end
 
+  def show
+    @recipe = @user.recipes.find(params[:id])  
+  end
+
   private
 
   def find_user

@@ -26,6 +26,17 @@ class RecipesController < ApplicationController
     end
   end
 
+  def destroy
+    @recipe = Recipe.find(params[:id])
+  
+    if @recipe.destroy
+      redirect_to recipes_path, notice: 'Recipe was deleted successfully'
+    else
+      flash.now[:alert] = @recipe.errors.full_messages.first if @recipe.errors.any?
+      render :index, status: 400
+    end
+  end
+
   private
 
   def find_user

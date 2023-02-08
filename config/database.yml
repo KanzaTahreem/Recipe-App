@@ -26,8 +26,8 @@ development:
   database: Recipe_App_development
   host: localhost
   port: 5432
-  username: dbadmindev
-  password: db_admin
+  username: postgres
+  password: maia2015
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

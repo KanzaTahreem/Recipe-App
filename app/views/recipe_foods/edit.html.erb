@@ -1,0 +1,5 @@
+<%= form_with scope: @recipe_foods, url: recipe_food_path(recipe_id: @recipe.id), method: :put, local: true do |f| %>
+  <%= f.label :quantity %>
+  <%= f.number_field :quantity, min: 0 %>
+  <%= f.submit 'Update food quantity'%>
+<% end %>

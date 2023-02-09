@@ -53,7 +53,6 @@ class RecipesController < ApplicationController
   end
 
   def toggle
-    p params
     @recipe = Recipe.find(params[:id])
     # @recipe.update(public: !@recipe.public)
     # @recipe.toggle(:public)

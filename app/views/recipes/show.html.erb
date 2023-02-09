@@ -31,7 +31,7 @@
     <%= recipe_food.quantity %>
     $<%= recipe_food.food.price * recipe_food.quantity %>
     <%= button_to 'Remove', recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), method: :delete %>
-    <%= link_to "Edit this food", edit_food_path %>
+    <%= link_to 'Edit Food Quantity',  edit_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id) %>
   </div>
 <% end %>
 

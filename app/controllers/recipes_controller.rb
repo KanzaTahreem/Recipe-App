@@ -40,8 +40,8 @@ class RecipesController < ApplicationController
       flash.now[:alert] = @recipe.errors.full_messages.first if @recipe.errors.any?
       render :edit, status: 400
     end
-  end  
-  
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     if @recipe.destroy
@@ -59,11 +59,11 @@ class RecipesController < ApplicationController
     # @recipe.toggle(:public)
     @recipe.public = !@recipe.public
     text = @recipe.public? ? 'public' : 'private'
-    
+
     if @recipe.save
       flash[:notice] = "#{@recipe.name} is now #{text}!"
-    else
-      flash[:alert] = @recipe.errors.full_messages.first if @recipe.errors.any?
+    elsif @recipe.errors.any?
+      flash[:alert] = @recipe.errors.full_messages.first
     end
     redirect_to recipe_path(id: @recipe.id)
   end

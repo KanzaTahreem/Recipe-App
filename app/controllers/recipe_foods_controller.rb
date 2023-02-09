@@ -27,8 +27,7 @@ class RecipeFoodsController < ApplicationController
       render :new, status: 400
     end
   end
-  
-  
+
   def destroy
     @recipe_food = RecipeFood.find(params[:id])
     if @recipe_food.destroy

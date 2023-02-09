@@ -18,7 +18,6 @@ class FoodsController < ApplicationController
     @food = Food.new(food_params)
     @food.user = @user
 
-
     respond_to do |format|
       if @food.save
         format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
@@ -56,7 +55,7 @@ class FoodsController < ApplicationController
   def find_user
     @user = current_user
   end
-  
+
   def set_food
     @food = Food.find(params[:id])
   end

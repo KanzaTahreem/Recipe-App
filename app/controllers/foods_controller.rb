@@ -10,6 +10,7 @@ class FoodsController < ApplicationController
 
   def new
     @food = Food.new
+    puts "Recipe #{params[:recipe_id]}"
   end
 
   def edit; end
@@ -20,7 +21,11 @@ class FoodsController < ApplicationController
 
     respond_to do |format|
       if @food.save
-        format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
+        if params[:recipe_id].nil?
+          format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
+        else
+          format.html { redirect_to recipe_foods_path( params[:recipe_id]), notice: 'Food for recipe added successfully.' }
+        end
         format.json { render :show, status: :created, location: @food }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -42,10 +47,15 @@ class FoodsController < ApplicationController
   end
 
   def destroy
-    @food.destroy
+    food_recipes_count = RecipeFood.where(food_id: @food.id).count
 
     respond_to do |format|
-      format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
+      if food_recipes_count > 0
+        format.html { redirect_to foods_url, notice: "You cannot remove this food. #{food_recipes_count} recipies have it." }
+      else
+        @food.destroy
+        format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
+      end
       format.json { head :no_content }
     end
   end

@@ -1,0 +1,20 @@
+<h1>Public Recipes</h1>
+
+<button type="button" class="add_btn btn"><%= link_to "Add new recipe", new_recipe_path %></button>
+
+<ul class="public_recipes_container">
+  <% @public_recipes.each do |recipe| %>
+    <%= link_to recipe_path(id: recipe.id) do%>
+      <li>
+        <div>
+          <h2><%= recipe.name %></h2>
+          <span><%= recipe.user.name %></span>
+        </div>
+        <div>
+          <p>Total food items: <%= @public_recipes.count %></p>
+        </div>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
+

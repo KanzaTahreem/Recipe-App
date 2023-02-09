@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: %i[show edit update destroy]
+  before_action :find_user
 
   def index
     @foods = Food.all
@@ -15,6 +16,7 @@ class FoodsController < ApplicationController
 
   def create
     @food = Food.new(food_params)
+    @food.user = @user
 
     respond_to do |format|
       if @food.save
@@ -49,6 +51,10 @@ class FoodsController < ApplicationController
   end
 
   private
+
+  def find_user
+    @user = current_user
+  end
 
   def set_food
     @food = Food.find(params[:id])

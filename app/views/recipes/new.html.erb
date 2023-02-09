@@ -8,10 +8,10 @@
     <%= f.text_area :description, autofocus: true, placeholder: 'Add recipe description' %><br/>
 
     <%= f.label :preparation_time, 'Preparation Time'%>
-    <%= f.number_field :preparation_time, in: 1.0..5000.0, step: 0.5, autofocus: true, placeholder: 'Time in hours' %><br/>
+    <%= f.number_field :preparation_time, step: 0.5, autofocus: true, placeholder: 'Time in hours' %><br/>
 
     <%= f.label :cooking_time, 'Cooking Time' %>
-    <%= f.number_field :cooking_time, in: 1.0..5000.0, step: 0.5, autofocus: true, placeholder: 'Time in hours' %><br/>
+    <%= f.number_field :cooking_time, step: 0.5, autofocus: true, placeholder: 'Time in hours' %><br/>
 
     <%= f.label :public, "Do you want to make it public?" %>
     <%= f.check_box :public, autofocus: true%><br/>

@@ -1,0 +1,15 @@
+<%= form_with model: @recipe, local: true do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %></br>
+  <%= f.label :description %>
+  <%= f.text_area :description %></br>
+  <%= f.label :preparation_time %>
+  <%= f.text_field :preparation_time %></br>
+  <%= f.label :cooking_time %>
+  <%= f.text_field :cooking_time %></br>
+  <%= f.label :public %>
+  <%= f.check_box :public %></br>
+  </div>
+
+  <%= f.submit 'Update Recipe', class: 'update_btn' %>
+<% end %>

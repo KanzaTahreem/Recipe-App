@@ -11,7 +11,11 @@
   </head>
 
   <body>
-    <%= render partial: "shared/flash" %>
-    <%= yield %>
+    <%= render "recipes/header" %>
+    <div class="container">
+      <%= render partial: "shared/flash" %>
+      <%= yield %>
+    </div>
+    <%= render "recipes/footer" %>
   </body>
 </html>

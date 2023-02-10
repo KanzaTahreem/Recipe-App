@@ -6,6 +6,9 @@ ruby '3.1.3'
 # authentication
 gem 'devise'
 
+# authorization
+gem 'cancancan'
+
 # rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
 

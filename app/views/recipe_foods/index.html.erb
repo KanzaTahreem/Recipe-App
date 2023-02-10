@@ -1,26 +1,47 @@
+<div class="recipes-container">
+<h1>Add Food</h1>
+
 <% if @food.present? %>
-  <h1>Add here the quantity for <%= @food.name %> 🔽🥗 </h1>
-  <%= form_with model: @recipe_foods, url: recipe_foods_path(recipe_id: @recipe.id), local: true do |f| %>
-    <div>
-      <%= f.label :quantity, "Quantity",input_html: { min: 0 } %>
-      <%= f.number_field :quantity, placeholder: 'Enter quantity here' %>
-    </div>
-    <%= f.hidden_field :food_id, value: @food.id %>
-    <%= f.submit "Add Ingredient" %>
-  <% end %>
-  <%= link_to 'Go back to all foods', recipe_foods_path(recipe_id: @recipe.id) %>
-<% else %>
+
+  <h2>Add here the quantity for <%= @food.name %> 🔽🥗 </h2>
+
+     <div class="recipes-features">
+    <%= form_with model: @recipe_foods, url: recipe_foods_path(recipe_id: @recipe.id), local: true do |f| %>
+
+      <div>
+        <%= f.label :quantity, "Quantity",input_html: { min: 0 } %>
+        <%= f.number_field :quantity, placeholder: 'Enter quantity here' %>
+      </div>
+
+      <%= f.hidden_field :food_id, value: @food.id %>
+      <%= f.submit "Add Ingredient", { class: "btn"} %>
+    
+    <% end %>
+    <div class="back_food alert-">
+      <button class="food_btn">
+      <%= link_to 'Go back to all foods', recipe_foods_path(recipe_id: @recipe.id) %>
+      </button>
+    </div>  
+
+    <% else %>
+
   <h2><%= @foods.count %> foods item(s) are available in the store 🔽</h2>
+
   <section id="foods">
     <% @foods.each do |food| %>
       <ul class="food">
-        <li>Name: <%= food.name %></li>
-        <li>Measurement Unit: <%= food.measurement_unit %></li>
-        <li>Price Per Unit: <%= food.price %></li>
-        <%= link_to 'Select food', recipe_foods_path(recipe_id: @recipe.id, food_id: food.id) %>
+        <li><%= food.name %></li>
+        <li><%= food.measurement_unit %></li>
+        <li><%= food.price %></li>
+        <li><%= link_to 'Select', recipe_foods_path(recipe_id: @recipe.id, food_id: food.id) %></li>
       </ul>
     <% end %>
   </section>
   <h4>Need a different food item ? 🥙🥕<%= link_to 'Add from here', new_food_path(recipe_id: @recipe.id) %> </h4>
-  <%= link_to 'Go back to recipe', recipe_path(id: @recipe.id) %>
+  <duv class="back_food">
+    <button class="food_btn"><%= link_to 'Go back to recipe', recipe_path(id: @recipe.id) %></button>
+  </duv>
+  
 <% end %>
+
+</div>

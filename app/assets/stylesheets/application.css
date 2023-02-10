@@ -440,6 +440,21 @@ h1 {
   flex-direction: column;
 }
 
+.recipes-shopping {
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  line-height: 3rem;
+}
+
+.shoppinglist {
+  display: grid;
+  grid-template-columns: 4fr 3fr 2fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--grey);
+}
+
 /* -------footer-------- */
 
 footer {

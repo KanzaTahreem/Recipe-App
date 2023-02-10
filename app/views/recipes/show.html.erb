@@ -23,6 +23,10 @@
 <% end %>
 </div>
 
+<div class="back_food">
+<%= link_to "generate shooping list", shoppinglist_index_path(recipe_id: @recipe.id), class:"food_btn" %>
+</div>
+
 <div class="recipes-container">
 <% @recipe_foods.each do |recipe_food| %>
   <div class="food">

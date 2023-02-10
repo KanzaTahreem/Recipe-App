@@ -15,7 +15,9 @@ class ShoppinglistController < ApplicationController
       end
     end
   end
+
   private
+
   def find_user
     @user = current_user
   end

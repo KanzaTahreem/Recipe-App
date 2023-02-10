@@ -37,11 +37,10 @@
       </ul>
     <% end %>
   </section>
-
-  <h4>Need a different food item ? 🥙🥕<%= link_to 'Add from here', new_food_path %> </h4> 
-  <div class="back_food">
+  <h4>Need a different food item ? 🥙🥕<%= link_to 'Add from here', new_food_path(recipe_id: @recipe.id) %> </h4>
+  <duv class="back_food">
     <button class="food_btn"><%= link_to 'Go back to recipe', recipe_path(id: @recipe.id) %></button>
-  </div>
+  </duv>
   
 <% end %>
 

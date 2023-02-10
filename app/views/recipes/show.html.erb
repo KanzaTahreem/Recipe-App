@@ -24,18 +24,18 @@
 </div>
 
 <div class="recipes-container">
-<% @recipe_foods.each do |recipe_food| %>
-  <div class="food">
-    <div><%= recipe_food.food.name %></div>
-    <div>Qty: <%= recipe_food.quantity %></div>
-    <div>Total Price: $<%= recipe_food.food.price * recipe_food.quantity %></div>
-    <div>
-      <div class="food_btn_spc"><%= link_to "Edit this food", edit_food_path %></div>
-      <div><%= button_to 'Remove', recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), method: :delete, class: 'remove_btn' %></div>
+  <% @recipe_foods.each do |recipe_food| %>
+    <div class="food">
+      <div><%= recipe_food.food.name %></div>
+      <div>Qty: <%= recipe_food.quantity %></div>
+      <div>Total Price: $<%= recipe_food.food.price * recipe_food.quantity %></div>
+      <div>
+        <div class="food_btn_spc"><%= link_to "Edit this food",  edit_recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id) %></div>
+        <div><%= button_to 'Remove', recipe_food_path(recipe_id: @recipe.id, id: recipe_food.id), method: :delete, class: 'remove_btn' %></div>
+      </div>
     </div>
+  <% end %>
   </div>
-<% end %>
-</div>
 
 <div class="list_btn">
 <button class="recipe_btn"><%= link_to 'Add ingredient', recipe_foods_path(recipe_id: @recipe.id) %></button>

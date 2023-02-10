@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   before_action :find_user
 
   def index
@@ -44,6 +46,10 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    @recipe_foods = RecipeFood.where(recipe_id: @recipe.id)
+    @recipe_foods.each do |recipe_food|
+      recipe_food.destroy
+    end
     if @recipe.destroy
       redirect_to recipes_path, notice: 'Recipe was deleted successfully'
     else

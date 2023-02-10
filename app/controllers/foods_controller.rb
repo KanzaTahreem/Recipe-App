@@ -24,7 +24,9 @@ class FoodsController < ApplicationController
         if params[:recipe_id].nil?
           format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
         else
-          format.html { redirect_to recipe_foods_path( params[:recipe_id]), notice: 'Food for recipe added successfully.' }
+          format.html do
+            redirect_to recipe_foods_path(params[:recipe_id]), notice: 'Food for recipe added successfully.'
+          end
         end
         format.json { render :show, status: :created, location: @food }
       else
@@ -50,8 +52,10 @@ class FoodsController < ApplicationController
     food_recipes_count = RecipeFood.where(food_id: @food.id).count
 
     respond_to do |format|
-      if food_recipes_count > 0
-        format.html { redirect_to foods_url, notice: "You cannot remove this food. #{food_recipes_count} recipies have it." }
+      if food_recipes_count.positive?
+        format.html do
+          redirect_to foods_url, notice: "You cannot remove this food. #{food_recipes_count} recipies have it."
+        end
       else
         @food.destroy
         format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }

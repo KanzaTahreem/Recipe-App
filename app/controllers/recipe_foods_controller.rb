@@ -17,9 +17,8 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.new
   end
 
-  def edit
-  end
-  
+  def edit; end
+
   def update
     @recipe_food = RecipeFood.find_by_id(params[:id])
     @recipe_food.quantity = params[:quantity]
@@ -30,7 +29,7 @@ class RecipeFoodsController < ApplicationController
       render :edit, status: 400
     end
   end
-  
+
   def create
     @recipe_food = RecipeFood.new(recipe_food_params)
     @recipe_food.recipe = @recipe

@@ -1,15 +1,455 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* -------Generales---------- */
+
+:root {
+  --red: #BD3B1B;
+  --green: #B6C61A;
+  --dark: #2D2D2D;
+  --grey: #ECECEC;
+  --white: #fff;
+  --principalFont: 'Montserrat', sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+p,
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  background-color: var(--white);
+  font-size: 1.4rem;
+  font-family: var(--principalFont);
+  color: var(--dark);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow-x: hidden;
+  background-color: var(--grey);
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.desk, .hide {
+  display: none;
+}
+
+@media (min-width: 768px) {
+
+  .desk {
+    display: block;
+  }
+  .mob {
+    display: none;
+  }
+
+}
+
+.flash-notice, .flash-alert {
+  padding: 2rem;
+  text-align: center;
+  color: var(--red);
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.new_user {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--grey);
+  width: 90%;
+  max-width: 35rem;
+  margin: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.new_user input{
+  width: 100%;
+  padding: 0.5rem;
+}
+
+.new_user textarea {
+  height: 60px;
+  width: 100%;
+  resize: none;
+  padding: 0.5rem;
+}
+
+.new_user div {
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.new_user .field {
+  width: 100%;
+}
+
+.user_links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.recipe_btn_gen {
+  background-color: var(--green);
+  padding: 5px 14px;
+  color: var(--white);
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.recipe_btn_gen:hover {
+  box-shadow: 3px 3px 4px 1px #0e0e0e9e;
+}
+
+.field {
+  text-align: center;
+}
+
+em {
+  font-size: 1rem;
+}
+
+/* --------header--------- */
+
+header {
+  width: 100%;
+  background-color: var(--white);
+}
+
+.banner {
+  background-image: url("images/back_mob.jpg");
+  padding: 2rem;
+  margin: 2rem;
+  border-radius: 0.8rem;
+  height: 12rem;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  background-size: cover;
+}
+
+@media (min-width: 768px) {
+  .banner {
+    background-image: url("images/back_desk.jpg");
+  }
+}
+
+.banner h2{
+  font-size: 4rem;
+  font-weight: bold;
+  font-style: italic;
+  color: var(--white);
+  text-shadow: 0px 4px 4px #000000;
+}
+
+nav {
+  background-color: var(--grey);
+}
+
+ul {
+  display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+}
+
+li {
+  border-right: 1px solid var(--dark);
+  padding: 0px 2rem 0px 2rem;
+  text-align: center;
+}
+
+li:last-child {
+  border: none;
+}
+
+li a:hover{
+  text-decoration: underline;
+}
+
+/*-------container--------*/
+
+.container {
+  width: 100%;
+  background-color: var(--white);
+  flex: 1;
+}
+
+.recipes-container {
+  max-width: 70rem;
+  margin: 0 3rem;
+  padding: 0rem 1.5rem 3rem;
+  border-width: 0px 1px 1px 1px;
+  border-style: solid;
+  border-color: var(--grey);
+  border-radius: 0px 0px 25px 25px
+}
+
+.recipes-container h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  padding: 1rem;
+}
+
+.recipes-container h4 {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 768px) {
+  .recipes-container{
+    margin: 0 auto;
+  }
+}
+
+h1 {
+  font-size: 2.1rem;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
+  padding: 1.6rem;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 4fr 3fr 2fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--grey);
+}
+
+.list .list_food{
+  padding: 2rem 1rem;
+}
+
+.list .name{
+  font-weight: bold;
+}
+
+.list .title{
+  font-size: 0.8rem;
+  padding: 0.5rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .list .title{
+    font-size: 1rem;
+  }
+}
+
+.list_food_btn {
+  background-color: var(--red);
+  border: none;
+  padding: 1px 1px;
+  color: var(--white);
+  font-weight: bold;
+  font-size: 1.4rem;
+  border-radius: 1.5rem;
+  width: 19px;
+  cursor: pointer;
+}
+
+.list_btn {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .list_btn {
+    justify-content: flex-end;
+    flex-direction: row;
+    gap: 1rem;
+  }
+}
+
+.list_btn .recipe_btn {
+  background-color: var(--green);
+  padding: 5px 14px;
+  color: var(--white);
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+
+.list_btn .recipe_btn:hover {
+  box-shadow: 3px 3px 4px 1px #0e0e0e9e;
+}
+
+.back_food {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.back_food .food_btn {
+  background-color: var(--green);
+  padding: 5px 14px;
+  color: var(--white);
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2.5rem;
+}
+
+.back_food .food_btn:hover {
+  box-shadow: 3px 3px 4px 1px #0e0e0e9e;
+}
+
+.recipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top: 1px solid var(--grey);
+  border-bottom: 1px solid var(--grey);
+}
+
+.recipe .name{
+  font-weight: bold;
+  padding: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.list_recipe_p {
+  border: 1px solid var(--grey);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.list_recipe_btn {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: var(--red);
+  font-weight: bold;
+  background-color: var(--grey);
+  border: none;
+  border-radius: 0px 0px 5px 5px;
+  padding: 5px 10px;
+  align-self: flex-end;
+  position: relative;
+  right: 5rem;
+}
+
+.food {
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr 3fr;
+  align-items: center;
+  border-bottom: 1px solid var(--grey);
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+.food a {
+  background-color: var(--green);
+  padding: 5px;
+  color: var(--white);
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2.5rem;
+}
+
+.food .food_btn_spc {
+  margin-bottom: 1rem;
+}
+
+.food .remove_btn {
+  background-color: var(--red);
+  padding: 5px;
+  color: var(--white);
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5px;
+}
+
+.recipes-title {
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid var(--grey);
+}
+
+.recipes-by {
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.recipes-features {
+  width: 100%;
+  max-width: 40rem;
+  margin: auto;
+  border: 1px solid var(--grey);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  gap: 1rem;
+}
+
+.recipes-features .btn{
+  background-color: var(--green);
+  padding: 5px 14px;
+  color: var(--white);
+  font-size: 1.4rem;
+  border: none;
+  border-radius: 5px;
+  margin-top: 2rem;
+}
+
+.recipes-features .remove_btn {
+  background-color: var(--red);
+}
+
+.recipes-features form {
+  display: flex;
+  flex-direction: column;
+}
+
+/*-------footer--------*/
+
+footer {
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+}

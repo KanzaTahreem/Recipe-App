@@ -3,7 +3,7 @@
 
 # 📗 Table of Contents
 - [📗 Table of Contents](#-table-of-contents)
-- [📖 Blog App ](#-blog-app-)
+- [📖 Recipe App ](#-recipe-app-)
   - [🛠 Built With ](#-built-with-)
     - [Tech Stack ](#tech-stack-)
     - [Key Features ](#key-features-)
@@ -22,7 +22,7 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Blog App <a name="about-the-project"></a>
+# 📖 Recipe App <a name="about-the-project"></a>
 The **Recipe app** keeps track of all your ingredients, recipes, and public recipes. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
 
 ## 🛠 Built With <a name="built-with"></a>

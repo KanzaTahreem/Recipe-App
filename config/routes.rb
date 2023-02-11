@@ -19,5 +19,5 @@ Rails.application.routes.draw do
 
   get '/unauthorized', to: 'unauthorized#index'
 
-  root "recipes#index"
+  root "foods#index"
   end

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe '/foods', type: :request do
-
   let(:valid_attributes) do
     skip('Add a hash of attributes valid for your model')
   end

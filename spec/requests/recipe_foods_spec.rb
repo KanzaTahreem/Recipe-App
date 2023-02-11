@@ -106,4 +106,3 @@ RSpec.describe '/foods', type: :request do
     end
   end
 end
-

@@ -1,9 +1,7 @@
 class ShoppinglistController < ApplicationController
   before_action :find_user
-  # before_action :find_recipe
 
   def index
-    # @total_price = @recipe_foods.sum { |recipe_food| recipe_food.food.price * recipe_food.quantity }
     @total_foods = 0
     @total_price = 0
     @recipe_foods = []
@@ -21,12 +19,8 @@ class ShoppinglistController < ApplicationController
   def find_user
     @user = current_user
   end
-  # def find_recipe
-  #   @recipe = Recipe.find(params[:recipe_id])
-  # end
 
   def show
-    # @recipe = @user.recipes.find(params[:id])
     @recipe = Recipe.includes(:recipe_foods).find(params[:id])
     @recipe_foods = @recipe.recipe_foods
   end

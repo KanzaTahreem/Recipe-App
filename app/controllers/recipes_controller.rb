@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
   end
 
   def show
-    # @recipe = @user.recipes.find(params[:id])
     @recipe = Recipe.find(params[:id])
     @recipe_foods = @recipe.recipe_foods.includes(:food)
   end
@@ -58,8 +57,6 @@ class RecipesController < ApplicationController
 
   def toggle
     @recipe = Recipe.find(params[:id])
-    # @recipe.update(public: !@recipe.public)
-    # @recipe.toggle(:public)
     @recipe.public = !@recipe.public
     text = @recipe.public? ? 'public' : 'private'
 

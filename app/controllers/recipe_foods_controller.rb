@@ -1,5 +1,4 @@
 class RecipeFoodsController < ApplicationController
-
   load_and_authorize_resource
 
   before_action :find_recipe
@@ -7,7 +6,6 @@ class RecipeFoodsController < ApplicationController
   before_action :find_food
 
   def index
-
     if can? :manage, @recipe
       @foods = @user.foods.all
       @recipe_foods = RecipeFood.all
@@ -16,7 +14,7 @@ class RecipeFoodsController < ApplicationController
       puts 'Can Not Manage'
       @recipe_foods = []
       @foods = []
-      flash[:alert] = "Un Authorized"
+      flash[:alert] = 'Un Authorized'
       redirect_to recipe_path(id: @recipe.id)
     end
   end
@@ -25,17 +23,16 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = @recipe.recipe_foods
   end
 
-
   def new
     @foods = @user.foods.all
     @recipe_food = RecipeFood.new
   end
 
   def edit
-    unless can? :edit, @recipe
-      flash[:alert] = "Un Authorized"
-      redirect_to recipe_path(id: @recipe.id)
-    end
+    return if can? :edit, @recipe
+
+    flash[:alert] = 'Un Authorized'
+    redirect_to recipe_path(id: @recipe.id)
   end
 
   def update
@@ -61,10 +58,7 @@ class RecipeFoodsController < ApplicationController
   end
 
   def destroy
-    unless can? :edit, @recipe
-      flash[:alert] = "Un Authorized"
-      redirect_to recipe_path(id: @recipe.id)
-    else
+    if can? :edit, @recipe
       @recipe_food = RecipeFood.find(params[:id])
       if @recipe_food.destroy
         redirect_to recipe_path(@recipe), notice: 'Recipe Food was deleted successfully'
@@ -72,6 +66,9 @@ class RecipeFoodsController < ApplicationController
         flash.now[:alert] = @recipe_food.errors.full_messages.first if @recipe_food.errors.any?
         render :new, status: 400
       end
+    else
+      flash[:alert] = 'Un Authorized'
+      redirect_to recipe_path(id: @recipe.id)
     end
   end
 

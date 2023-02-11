@@ -4,7 +4,8 @@ RSpec.describe 'Recipes Page', type: :system do
   describe 'Recipe /index' do
     before :each do
       @user = User.create!(name: 'name', email: 'email@gmail.com', password: 'password')
-      @recipe = Recipe.create!(name: 'recipe', preparation_time: 1, cooking_time: 2, description: 'description', public: true, user_id: @user.id)
+      @recipe = Recipe.create!(name: 'recipe', preparation_time: 1, cooking_time: 2, description: 'description',
+                               public: true, user_id: @user.id)
       @user.skip_confirmation!
       @user.save!
       visit new_user_session_path
@@ -14,7 +15,7 @@ RSpec.describe 'Recipes Page', type: :system do
       sleep(2)
       visit recipes_path
     end
-    
+
     it 'displays the name of recipe' do
       expect(page).to have_content(@recipe.name)
     end

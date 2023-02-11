@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Ability
   include CanCan::Ability
 
@@ -24,7 +22,7 @@ class Ability
       # can :read, Recipe, user_id: user.id # Can Read Recipe if user_id == Current user id
       # can :destroy, Recipe, user_id: user.id
       # can :create, Recipe
-      
+
     end
     #
     # The first argument to `can` is the action you are giving the user

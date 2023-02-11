@@ -10,6 +10,6 @@ class User < ApplicationRecord
 
   # fuction bnao admin ka
   def admin?
-    self.role == "admin"
+    role == 'admin'
   end
 end

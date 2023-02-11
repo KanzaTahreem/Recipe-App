@@ -533,10 +533,18 @@ h1 {
   border-bottom: 1px solid var(--grey);
 }
 
+.shopping-lists {
+  text-align: center;
+}
+
 /* -------footer-------- */
 
 footer {
   text-align: center;
   padding: 0.5rem;
   font-size: 1.2rem;
+}
+
+.footer_link {
+  font-style: italic;
 }

@@ -3,6 +3,7 @@
 :root {
   --red: #bd3b1b;
   --green: #b6c61a;
+  --orange: #d8a800;
   --dark: #2d2d2d;
   --grey: #ececec;
   --white: #fff;
@@ -36,6 +37,10 @@ ul {
 img {
   width: 100%;
   height: auto;
+}
+
+textarea {
+  font-family: var(--principalFont);
 }
 
 body {
@@ -102,8 +107,15 @@ body {
 }
 
 .new_user div {
-  margin-bottom: 1rem;
+  margin-bottom: 1.3rem;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.new_user label {
+  font-style: italic;
 }
 
 .new_user .field {
@@ -217,15 +229,41 @@ li a:hover {
 
 .recipes-container h2 {
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   padding: 1rem;
+  font-style: italic;
+  font-weight: normal;
 }
 
-.recipes-container h4 {
+.recipes_container_list {
   text-align: center;
-  padding: 1rem;
-  margin-top: 4rem;
+}
+
+.food {
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr 3fr;
+  align-items: center;
+  border-bottom: 1px solid var(--grey);
+  margin-top: 2rem;
   margin-bottom: 2rem;
+  padding-bottom: 1rem;
+}
+
+.recipes_container_list .food {
+  margin: 1em 0;
+  padding-bottom: 0.5em;
+  grid-template-columns: 3fr 2fr 2fr 2fr;
+}
+
+.list {
+  display: grid;
+  grid-template-columns: 4fr 3fr 2fr 1fr;
+  align-items: center;
+  border-bottom: 1px solid var(--grey);
+}
+
+.recipes_container_list .list {
+  grid-template-columns: 3fr 2fr 2fr 2fr;
 }
 
 @media (min-width: 768px) {
@@ -240,13 +278,6 @@ h1 {
   font-style: italic;
   text-align: center;
   padding: 1.6rem;
-}
-
-.list {
-  display: grid;
-  grid-template-columns: 4fr 3fr 2fr 1fr;
-  align-items: center;
-  border-bottom: 1px solid var(--grey);
 }
 
 .list .list_food {
@@ -295,7 +326,8 @@ h1 {
   }
 }
 
-.list_btn .recipe_btn {
+.list_btn .recipe_btn,
+.toggle_btn {
   background-color: var(--green);
   padding: 5px 14px;
   color: var(--white);
@@ -305,15 +337,29 @@ h1 {
   margin-top: 2rem;
 }
 
-.list_btn .recipe_btn:hover {
+.toggle_btn {
+  background: var(--orange);
+  font-style: italic;
+  font-size: 1.2rem;
+  padding: 5px 5px;
+  margin: 1rem 0;
+}
+
+.list_btn .recipe_btn:hover,
+.toggle_btn:hover {
   box-shadow: 3px 3px 4px 1px #0e0e0e9e;
+}
+
+.toggle {
+  display: flex;
+  justify-content: end;
 }
 
 .back_food {
   display: flex;
-  justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
   gap: 2rem;
+  justify-content: flex-end;
 }
 
 .back_food .food_btn {
@@ -323,7 +369,6 @@ h1 {
   font-size: 1.4rem;
   border: none;
   border-radius: 5px;
-  margin-top: 2.5rem;
 }
 
 .back_food .food_btn:hover {
@@ -364,37 +409,18 @@ h1 {
   right: 5rem;
 }
 
-.food {
-  display: grid;
-  grid-template-columns: 3fr 2fr 2fr 3fr;
-  align-items: center;
-  border-bottom: 1px solid var(--grey);
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  padding-bottom: 1rem;
-}
-
-.food li a:hover {
-  background-color: var(--green);
-  padding: 5px;
-  color: var(--white);
-  font-size: 1.4rem;
-  border: none;
-  border-radius: 5px;
-  margin-top: 2.5rem;
-}
-
 .food .food_btn_spc {
-  margin-bottom: 1rem;
+  margin-bottom: inherit;
+}
+
+.food_btn_spc img {
+  width: inherit;
 }
 
 .food .remove_btn {
-  background-color: var(--red);
-  padding: 5px;
-  color: var(--white);
-  font-size: 1.4rem;
+  background-color: inherit;
+  padding: inherit;
   border: none;
-  border-radius: 5px;
 }
 
 .recipes-title {
@@ -410,7 +436,7 @@ h1 {
 
 .recipes-features {
   width: 100%;
-  max-width: 40rem;
+  max-width: 50rem;
   margin: auto;
   border: 1px solid var(--grey);
   display: flex;
@@ -431,6 +457,10 @@ h1 {
   margin-top: 2rem;
 }
 
+.recipes-features .btn:hover {
+  box-shadow: 3px 3px 4px 1px #0e0e0e9e;
+}
+
 .recipes-features .remove_btn {
   background-color: var(--red);
 }
@@ -438,6 +468,44 @@ h1 {
 .recipes-features form {
   display: flex;
   flex-direction: column;
+}
+
+.recipes-features .show_more_btn,
+.recipes-features .show_less_btn {
+  color: var(--green);
+  text-decoration: underline;
+}
+
+.time {
+  display: flex;
+  gap: 1.5em;
+}
+
+.time span:first-child,
+.steps {
+  font-style: italic;
+}
+
+.description {
+  text-align: justify;
+}
+
+.select_food {
+  grid-template-columns: 3fr 2fr 2fr 2fr;
+  text-align: center;
+  padding-top: 2rem;
+}
+
+.recipe_foods {
+  grid-template-columns: 3fr 2fr 2fr 2fr;
+}
+
+.recipe_foods img {
+  width: inherit;
+}
+
+.recipe_foods li {
+  border: none;
 }
 
 .recipes-shopping {
@@ -455,10 +523,18 @@ h1 {
   border-bottom: 1px solid var(--grey);
 }
 
+.shopping-lists {
+  text-align: center;
+}
+
 /* -------footer-------- */
 
 footer {
   text-align: center;
   padding: 0.5rem;
   font-size: 1.2rem;
+}
+
+.footer_link {
+  font-style: italic;
 }

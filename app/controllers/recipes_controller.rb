@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  load_and_authorize_resource
+
   before_action :find_user
 
   def index
@@ -6,9 +8,8 @@ class RecipesController < ApplicationController
   end
 
   def show
-    # @recipe = @user.recipes.find(params[:id])
-    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
-    @recipe_foods = @recipe.recipe_foods
+    @recipe = Recipe.find(params[:id])
+    @recipe_foods = @recipe.recipe_foods.includes(:food)
   end
 
   def new
@@ -44,6 +45,8 @@ class RecipesController < ApplicationController
 
   def destroy
     @recipe = Recipe.find(params[:id])
+    @recipe_foods = RecipeFood.where(recipe_id: @recipe.id)
+    @recipe_foods.each(&:destroy)
     if @recipe.destroy
       redirect_to recipes_path, notice: 'Recipe was deleted successfully'
     else
@@ -54,8 +57,6 @@ class RecipesController < ApplicationController
 
   def toggle
     @recipe = Recipe.find(params[:id])
-    # @recipe.update(public: !@recipe.public)
-    # @recipe.toggle(:public)
     @recipe.public = !@recipe.public
     text = @recipe.public? ? 'public' : 'private'
 

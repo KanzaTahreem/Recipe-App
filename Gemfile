@@ -6,6 +6,9 @@ ruby '3.1.3'
 # authentication
 gem 'devise'
 
+# authorization
+gem 'cancancan'
+
 # rubocop
 gem 'rubocop', '>= 1.0', '< 2.0'
 
@@ -62,6 +65,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem 'bullet'
   gem 'web-console'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]

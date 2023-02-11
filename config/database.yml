@@ -26,8 +26,8 @@ development:
   database: Recipe_App_development
   host: localhost
   port: 5432
-  username: postgres
-  password: maia2015
+  username: dbadmindev
+  password: db_admin
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -64,9 +64,8 @@ test:
   database: Recipe_App_test
   host: localhost
   port: 5432
-  username: postgres
-  password: maia2015
-
+  username: dbadmindev
+  password: db_admin
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
 # ever seen by anyone, they now have access to your database.

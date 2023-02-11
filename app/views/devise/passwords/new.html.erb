@@ -1,7 +1,7 @@
 <div class="recipes-container">
 <h1>Forgot your password?</h1>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+<%= form_for(resource, as: resource_name, data: {turbo: false}, url: password_path(resource_name), data: { turbo:false }, html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">

@@ -1,6 +1,6 @@
 <div id="<%= dom_id food %>" class="list">
   <div class="list_food name">
-    <%= food.name %>
+    <%= link_to food.name, food_path(id: food.id) %>
   </div>
   <div class="list_food">
     <%= food.measurement_unit %>

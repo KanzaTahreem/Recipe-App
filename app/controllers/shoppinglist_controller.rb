@@ -19,9 +19,4 @@ class ShoppinglistController < ApplicationController
   def find_user
     @user = current_user
   end
-
-  def show
-    @recipe = Recipe.includes(:recipe_foods).find(params[:id])
-    @recipe_foods = @recipe.recipe_foods
-  end
 end

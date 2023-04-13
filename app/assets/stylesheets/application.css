@@ -217,6 +217,11 @@ li a:hover {
   flex: 1;
 }
 
+.container h2 {
+  text-align: center;
+  padding: 2rem 0;
+}
+
 .recipes-container {
   max-width: 70rem;
   margin: 0 3rem;

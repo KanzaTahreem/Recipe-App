@@ -15,7 +15,7 @@
     - [Usage ](#usage-)
     - [Run tests](#run-tests)
     - [Deployment](#deployment)
-  - [� Authors ](#-authors-)
+  - [👥 Authors ](#-authors-)
   - [🔭 Future Features ](#-future-features-)
   - [🤝 Contributing ](#-contributing-)
   - [⭐️ Show your support ](#️-show-your-support-)
@@ -63,7 +63,7 @@ The **Recipe app** keeps track of all your ingredients, recipes, and public reci
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- Explore this project on [Render](https://recipe-app-livl.onrender.com/). 🔗
+- Explore this project on [Render](https://recipe-app-livl.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

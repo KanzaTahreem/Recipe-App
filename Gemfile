@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.3'
 
+# Use .env file to store environment variables
+gem 'dotenv-rails'
+
 # authentication
 gem 'devise'
 
